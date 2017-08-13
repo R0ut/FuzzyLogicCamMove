@@ -1,17 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO.Ports;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using WPF_INZ.Calculations;
+using WPF_INZ.Connection;
+using WPF_INZ.Fuzzy;
 
 namespace WPF_INZ
 {
@@ -20,9 +13,16 @@ namespace WPF_INZ
     /// </summary>
     public partial class MainWindow : Window
     {
+        Calculation calculation;
         public MainWindow()
         {
             InitializeComponent();
+            calculation = new Calculation(this.RadioButtonGroup);
+        }
+
+        private void SendData(object sender, RoutedEventArgs e)
+        {
+            calculation.SendData();
         }
     }
 }
