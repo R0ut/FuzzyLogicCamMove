@@ -9,11 +9,11 @@ namespace WPF_INZ.Fuzzy
     class FuzzyLogic
     {
         private double min, med1, med2, max, off;
-        public double[] fuzzificationInput = new double[3]; // tablica wartosci rozmyte z wykresow slow/middle/fast inputa
-        public double[] fuzzificationOutput = new double[3]; // tablica wartosci rozmyte z wykresow duza/srednia/mala output
-        
-        #region wejsciowe termy
-        
+        public double[] fuzzificationInput = new double[3]; // array of fuzzy values from slowSpeed/middleSpeed/fastSpeed input terms
+        public double[] fuzzificationOutput = new double[3]; // array of fuzzy values from bigPower/middlePower/smalPower output terms
+
+        #region input terms
+
         private double slowSpeed(double distance)
         {
             min = 0;
@@ -72,7 +72,7 @@ namespace WPF_INZ.Fuzzy
         }
         #endregion
 
-        #region wyjsciowe termy
+        #region output terms
         private double bigPower(double power)
         {
             min = 1000;
@@ -130,9 +130,9 @@ namespace WPF_INZ.Fuzzy
         #endregion
 
         /// <summary>
-        /// rozmywanie wartosci podenej w parametrze dla wykresów wejsciowych
+        /// Fuzzification of input
         /// </summary>
-        /// <param name="odleglosc">wartość do rozmycia</param>
+        /// <param name="para">Value to fuzzify</param>
         public void FuzzificationInput(int para)
         {
             slowSpeed(para);
@@ -141,9 +141,9 @@ namespace WPF_INZ.Fuzzy
         }
 
         /// <summary>
-        /// rozmywanie wartosci podenej w parametrze dla wykresów wyjsciowych
+        /// Fuzzification of output
         /// </summary>
-        /// <param name="odleglosc">wartość do rozmycia</param>
+        /// <param name="para">Value to fuzzify</param>
         public void FuzzificationOutput(int para)
         {
             bigPower(para);

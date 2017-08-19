@@ -28,6 +28,9 @@ namespace WPF_INZ.Calculations
             connection = new ConnectionToArduino();
         }
 
+        /// <summary>
+        /// Set combination of fuzzy rules, accord to checked radiobutton
+        /// </summary>
         private void choseOption()
         {
             foreach (object child in stackPanel.Children)
@@ -87,7 +90,7 @@ namespace WPF_INZ.Calculations
             for (int k = 0; k <= 999; k++)
             {
                 fuzzyLogic.FuzzificationInput(k);
-                rules.rulesRun(fuzzyLogic.fuzzificationInput, choseCombination);
+                rules.RulesRun(fuzzyLogic.fuzzificationInput, choseCombination);
                 double result = 0;
                 double sumOfWeights = 0; // sum of weights
 

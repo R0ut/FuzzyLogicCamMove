@@ -10,8 +10,12 @@ namespace WPF_INZ.Fuzzy
     {
         public double[] rules = new double[3];
 
-        //moc z jaką odpaliła się dana regóła
-        public void rulesRun(double[] fuzzification, int[] choseCombination)
+        /// <summary>
+        /// Execute rules
+        /// </summary>
+        /// <param name="fuzzification">fuzzy input</param>
+        /// <param name="choseCombination">Combination of rules</param>
+        public void RulesRun(double[] fuzzification, int[] choseCombination)
         {
             if (fuzzification[0] >= 0) rules[choseCombination[0]] = fuzzification[0];
             if (fuzzification[1] >= 0) rules[choseCombination[1]] = fuzzification[1];
