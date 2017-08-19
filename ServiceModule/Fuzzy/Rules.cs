@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WPF_INZ.Fuzzy
+﻿
+namespace ServiceModule.Fuzzy
 {
-    class Rules
+    public class Rules
     {
         public double[] rules = new double[3];
 

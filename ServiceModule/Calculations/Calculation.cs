@@ -1,37 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using ServiceModule.Connection;
+using ServiceModule.Fuzzy;
+using ServiceModule.Interfaces;
+using System;
+using System.ComponentModel.Composition;
 using System.Windows.Controls;
-using WPF_INZ.Connection;
-using WPF_INZ.Fuzzy;
+using System.Collections.Generic;
 
-namespace WPF_INZ.Calculations
+namespace ServiceModule.Calculations
 {
-    public class Calculation
+    [Export(typeof(ICalculationService))]
+    public class Calculation : ICalculationService
     {
-        FuzzyLogic fuzzyLogic;
-        Rules rules;
-        ConnectionToArduino connection;
-        StackPanel stackPanel;
+        FuzzyLogic fuzzyLogic = new FuzzyLogic();
+        Rules rules = new Rules();
+        ConnectionToArduino connection = new ConnectionToArduino();
         string[] delay = new string[1000];// table with delays to arduino
         int[] choseCombination = new int[3];
 
         
-        public Calculation(StackPanel stackPanel)
+        public Calculation()
         {
-            this.stackPanel = stackPanel;
-            fuzzyLogic = new FuzzyLogic();
-            rules = new Rules();
-            connection = new ConnectionToArduino();
+            
         }
 
         /// <summary>
         /// Set combination of fuzzy rules, accord to checked radiobutton
         /// </summary>
-        private void choseOption()
+        private void choseOption(StackPanel stackPanel)
         {
             foreach (object child in stackPanel.Children)
             {
@@ -113,9 +108,9 @@ namespace WPF_INZ.Calculations
         /// <summary>
         /// Sending the array of delays to arduino, and recive data from arduino when done operation
         /// </summary>
-        public void SendData()
+        private void sendData(StackPanel stackPanel)
         {
-            choseOption();
+            choseOption(stackPanel);
             calculateDelay();
 
             foreach (var item in delay)
@@ -131,6 +126,16 @@ namespace WPF_INZ.Calculations
                 watch.Stop();
                 Console.WriteLine(watch.ElapsedMilliseconds);
             }
+        }
+
+        public void Calculate()
+        {
+            calculateDelay();
+        }
+
+        public void SendDataToArduino(StackPanel stackPanel)
+        {
+            sendData(stackPanel);
         }
     }
 }

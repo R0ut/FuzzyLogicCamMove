@@ -1,25 +1,22 @@
-﻿<Window x:Class="WPF_INZ.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WPF_INZ"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
+﻿<UserControl x:Class="ChartModule.View.ChartControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ChartModule.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="20" />
             <RowDefinition Height="*" />
             <RowDefinition Height="20" />
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0">
-            <Button Content="Send Data" Click="SendData" />
+            <Button Content="Send Data" Command="{Binding SendDataCommand, Mode=TwoWay}"
+                    CommandParameter="{Binding ElementName=RadioButtonGroup}"/>
         </StackPanel>
-        <StackPanel x:Name="RadioButtonGroup" Orientation="Vertical" Grid.Row="1" Grid.Column="0" Margin="0,20,0,0">
+        <StackPanel x:Name="RadioButtonGroup" Orientation="Vertical" Grid.Row="1" Margin="0,20,0,0">
             <RadioButton IsChecked="True" Content="Slow-Middle-Fast" x:Name="radioButtonSlowMiddleFast"/>
             <RadioButton Content="Slow-Fast-Middle" x:Name="radioButtonSlowFastMiddle"/>
             <RadioButton Content="Middle-Slow-Fast" x:Name="radioButtonMiddleSlowFast"/>
@@ -28,4 +25,4 @@
             <RadioButton Content="Fast-Middle-Slow" x:Name="radioButtonFastMiddleSlow"/>
         </StackPanel>
     </Grid>
-</Window>
+</UserControl>

@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace WPF_INZ.Fuzzy
+namespace ServiceModule.Fuzzy
 {
-    class FuzzyLogic
+    public class FuzzyLogic
     {
         private double min, med1, med2, max, off;
         public double[] fuzzificationInput = new double[3]; // array of fuzzy values from slowSpeed/middleSpeed/fastSpeed input terms

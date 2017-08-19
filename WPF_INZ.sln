@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF_INZ", "WPF_INZ\WPF_INZ.csproj", "{4B37AD0C-5376-4FF1-9337-A929326EAF39}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChartModule", "ChartModule\ChartModule.csproj", "{B1916455-304C-4452-8CD4-B4034CF19F0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceModule", "ServiceModule\ServiceModule.csproj", "{EADC0E7B-3CA6-4A90-890C-46D0F9FC8424}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{4B37AD0C-5376-4FF1-9337-A929326EAF39}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B37AD0C-5376-4FF1-9337-A929326EAF39}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B37AD0C-5376-4FF1-9337-A929326EAF39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1916455-304C-4452-8CD4-B4034CF19F0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1916455-304C-4452-8CD4-B4034CF19F0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1916455-304C-4452-8CD4-B4034CF19F0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1916455-304C-4452-8CD4-B4034CF19F0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EADC0E7B-3CA6-4A90-890C-46D0F9FC8424}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EADC0E7B-3CA6-4A90-890C-46D0F9FC8424}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EADC0E7B-3CA6-4A90-890C-46D0F9FC8424}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EADC0E7B-3CA6-4A90-890C-46D0F9FC8424}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

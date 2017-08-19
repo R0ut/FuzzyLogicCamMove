@@ -2,9 +2,9 @@
 using System.IO.Ports;
 using System.Windows;
 
-namespace WPF_INZ.Connection
+namespace ServiceModule.Connection
 {
-    class ConnectionToArduino
+    public class ConnectionToArduino
     {
         public SerialPort myPort { get; set; } //property to Serial Port
 
@@ -14,7 +14,7 @@ namespace WPF_INZ.Connection
             {
                 myPort = new SerialPort();
                 myPort.BaudRate = 463611; //transmision speed
-                myPort.PortName = SerialPort.GetPortNames()[0];   
+                myPort.PortName = SerialPort.GetPortNames()[0];
 
                 myPort.Parity = Parity.None;
                 myPort.DataBits = 8;
