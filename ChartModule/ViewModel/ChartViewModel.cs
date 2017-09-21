@@ -7,6 +7,9 @@ using System.Windows.Input;
 
 namespace ChartModule.ViewModel
 {
+    /// <summary>
+    /// ViewModel to chart module
+    /// </summary>
     [Export]
     public class ChartViewModel : BindableBase
     {
@@ -19,13 +22,15 @@ namespace ChartModule.ViewModel
             SendDataCommand = new DelegateCommand<StackPanel>(sendDataAction);
         }
 
-        
-       
         #region Commands
         public ICommand SendDataCommand { get; set; }
         #endregion
 
         #region Actions
+        /// <summary>
+        /// Action that execute sending data to arduino
+        /// </summary>
+        /// <param name="stackPanel">stack panel with selected combination</param>
         private void sendDataAction(StackPanel stackPanel)
         {
             calculationService.SendDataToArduino(stackPanel);

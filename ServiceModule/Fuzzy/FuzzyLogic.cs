@@ -2,6 +2,9 @@
 
 namespace ServiceModule.Fuzzy
 {
+    /// <summary>
+    /// Contain input and output terms. Define fuzzification for input and output
+    /// </summary>
     public class FuzzyLogic
     {
         private double min, med1, med2, max, off;
@@ -10,7 +13,11 @@ namespace ServiceModule.Fuzzy
 
         #region input terms
 
-        private double slowSpeed(double distance)
+        /// <summary>
+        /// Term for start distance
+        /// </summary>
+        /// <param name="distance">Actual distance</param>
+        private void slowSpeed(double distance)
         {
             min = 0;
             med2 = 100;
@@ -24,10 +31,13 @@ namespace ServiceModule.Fuzzy
             else if (distance >= max)
                 off = 0;
             fuzzificationInput[0] = Math.Round(off, 2);
-            return Math.Round(off, 2);
         }
 
-        private double middleSpeed(double distance)
+        /// <summary>
+        /// Term for middle distance
+        /// </summary>
+        /// <param name="distance">Actual distance</param>
+        private void middleSpeed(double distance)
         {
             min = 150;
             med1 = 225;
@@ -46,10 +56,13 @@ namespace ServiceModule.Fuzzy
             else if (distance >= max)
                 off = 0;
             fuzzificationInput[1] = Math.Round(off, 2);
-            return Math.Round(off, 2);
         }
 
-        private double fastSpeed(double distance)
+        /// <summary>
+        /// Term for end distance
+        /// </summary>
+        /// <param name="distance">Actual distance</param>
+        private void fastSpeed(double distance)
         {
             min = 240;
             med1 = 450;
@@ -64,12 +77,16 @@ namespace ServiceModule.Fuzzy
             else if (distance > max)
                 off = 0;
             fuzzificationInput[2] = Math.Round(off, 2);
-            return Math.Round(off, 2);
         }
         #endregion
 
         #region output terms
-        private double bigPower(double power)
+
+        /// <summary>
+        /// Term for big power
+        /// </summary>
+        /// <param name="distance">power</param>
+        private void bigPower(double power)
         {
             min = 1000;
             med2 = 1700;
@@ -84,10 +101,13 @@ namespace ServiceModule.Fuzzy
             else if (power >= max)
                 off = 0;
             fuzzificationOutput[0] = Math.Round(off, 2);
-            return Math.Round(off, 2);
         }
 
-        private double middlePower(double power)
+        /// <summary>
+        /// Term for middle power
+        /// </summary>
+        /// <param name="distance">power</param>
+        private void middlePower(double power)
         {
             min = 2000;
             med1 = 2500;
@@ -103,10 +123,13 @@ namespace ServiceModule.Fuzzy
             else if (power >= max)
                 off = 0;
             fuzzificationOutput[1] = Math.Round(off, 2);
-            return Math.Round(off, 2);
         }
 
-        private double smalPower(double power)
+        /// <summary>
+        /// Term for smal power
+        /// </summary>
+        /// <param name="distance">power</param>
+        private void smalPower(double power)
         {
             min = 2600;
             med1 = 3000;
@@ -121,7 +144,6 @@ namespace ServiceModule.Fuzzy
             else if (power > max)
                 off = 0;
             fuzzificationOutput[2] = Math.Round(off, 2);
-            return Math.Round(off, 2);
         }
         #endregion
 

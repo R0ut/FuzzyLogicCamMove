@@ -3,12 +3,16 @@ using Microsoft.Practices.Prism.Modularity;
 
 namespace ServiceModule
 {
+    /// <summary>
+    /// Module class provide exportable service module
+    /// </summary>
     [ModuleExport(typeof(ServiceModule))]
     public class ServiceModule : IModule
     {
-        public void Initialize()
-        {
-
-        }
+        /// <summary>
+        /// Module class provide exportable chart module
+        /// </summary>
+        public void Initialize() { }
+        
     }
 }

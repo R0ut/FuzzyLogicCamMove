@@ -4,9 +4,15 @@ using System.Windows;
 
 namespace ServiceModule.Connection
 {
+    /// <summary>
+    /// Configurate connection to arduino
+    /// </summary>
     public class ConnectionToArduino
     {
-        public SerialPort myPort { get; set; } //property to Serial Port
+        /// <summary>
+        /// Property to Serial Port
+        /// </summary>
+        public SerialPort myPort { get; set; } 
 
         public ConnectionToArduino()
         {
@@ -21,7 +27,6 @@ namespace ServiceModule.Connection
                 myPort.StopBits = StopBits.One;
 
                 myPort.DtrEnable = true;
-                // myPort.Open();
             }
             catch (Exception)
             {

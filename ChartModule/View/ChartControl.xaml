@@ -17,7 +17,7 @@
                     CommandParameter="{Binding ElementName=RadioButtonGroup}"/>
         </StackPanel>
         <StackPanel x:Name="RadioButtonGroup" Orientation="Vertical" Grid.Row="1" Margin="0,20,0,0">
-            <RadioButton IsChecked="True" Content="Slow-Middle-Fast" x:Name="radioButtonSlowMiddleFast"/>
+            <RadioButton Content="Slow-Middle-Fast" x:Name="radioButtonSlowMiddleFast" IsChecked="True"/>
             <RadioButton Content="Slow-Fast-Middle" x:Name="radioButtonSlowFastMiddle"/>
             <RadioButton Content="Middle-Slow-Fast" x:Name="radioButtonMiddleSlowFast"/>
             <RadioButton Content="Middle-Fast-Slow" x:Name="radioButtonMiddleFastSlow"/>

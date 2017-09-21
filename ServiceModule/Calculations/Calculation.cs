@@ -4,24 +4,20 @@ using ServiceModule.Interfaces;
 using System;
 using System.ComponentModel.Composition;
 using System.Windows.Controls;
-using System.Collections.Generic;
 
 namespace ServiceModule.Calculations
 {
+    /// <summary>
+    /// This class do fuzzy logic, and send data to arduino
+    /// </summary>
     [Export(typeof(ICalculationService))]
     public class Calculation : ICalculationService
     {
         FuzzyLogic fuzzyLogic = new FuzzyLogic();
         Rules rules = new Rules();
         ConnectionToArduino connection = new ConnectionToArduino();
-        string[] delay = new string[1000];// table with delays to arduino
-        int[] choseCombination = new int[3];
-
-        
-        public Calculation()
-        {
-            
-        }
+        string[] delay = new string[1000]; // table with delays to arduino
+        int[] choseCombination = new int[3]; //combination of steper speed
 
         /// <summary>
         /// Set combination of fuzzy rules, accord to checked radiobutton
@@ -108,6 +104,7 @@ namespace ServiceModule.Calculations
         /// <summary>
         /// Sending the array of delays to arduino, and recive data from arduino when done operation
         /// </summary>
+        /// <param name="stackPanel">Stack panel with selected combination of speed</param>
         private void sendData(StackPanel stackPanel)
         {
             choseOption(stackPanel);
@@ -128,11 +125,18 @@ namespace ServiceModule.Calculations
             }
         }
 
+        /// <summary>
+        /// Public method to, Fuzzy logic calcualtions. Result is in delay array
+        /// </summary>
         public void Calculate()
         {
             calculateDelay();
         }
 
+        /// <summary>
+        /// Public method to, sending the array of delays to arduino, and recive data from arduino when done operation
+        /// </summary>
+        /// <param name="stackPanel">Stack panel with selected combination of speed</param>
         public void SendDataToArduino(StackPanel stackPanel)
         {
             sendData(stackPanel);

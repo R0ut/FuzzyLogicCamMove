@@ -11,13 +11,23 @@ using System.Windows;
 
 namespace WPF_INZ
 {
+    /// <summary>
+    /// Bootstrapper is the one who has responsibility to initialization of your application 
+    /// </summary>
     public class Bootstrapper : MefBootstrapper
     {
+        /// <summary>
+        ///  Specify the top-level Window for Prism application
+        /// </summary>
+        /// <returns>Main window</returns>
         protected override DependencyObject CreateShell()
         {
             return this.Container.GetExportedValue<Shell>();
         }
 
+        /// <summary>
+        /// Initialization steps, after shell create
+        /// </summary>
         protected override void InitializeShell()
         {
             base.InitializeShell();
@@ -25,6 +35,9 @@ namespace WPF_INZ
             Application.Current.MainWindow.Show();
         }
 
+        /// <summary>
+        /// Type registration to the AggregateCatalog imperatively
+        /// </summary>
         protected override void ConfigureAggregateCatalog()
         {
             base.ConfigureAggregateCatalog();
@@ -35,6 +48,10 @@ namespace WPF_INZ
             this.AggregateCatalog.Catalogs.Add(new AssemblyCatalog(typeof(ServiceModule.ServiceModule).Assembly));
         }
 
+        /// <summary>
+        /// Create container
+        /// </summary>
+        /// <returns>Container</returns>
         protected override CompositionContainer CreateContainer()
         {
             var container = base.CreateContainer();
