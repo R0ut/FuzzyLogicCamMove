@@ -13,13 +13,14 @@ namespace ServiceModule.Interfaces
     public interface ICalculationService
     {
         /// <summary>
-        /// Fuzzy logic calcualtions
+        /// Chose combination
         /// </summary>
-        void Calculate();
+        /// <param name="stackPanel">Stack panel with selected combination</param>
+        void ChoseOption(StackPanel stackPanel);
         /// <summary>
         /// Send data to arduino
         /// </summary>
-        /// <param name="stackPanel">Stack panel with selected combination</param>
-        void SendDataToArduino(StackPanel stackPanel);
+        
+        void SendDataToArduino();
     }
 }

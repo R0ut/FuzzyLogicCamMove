@@ -1,8 +1,10 @@
-﻿using ServiceModule.Connection;
+﻿using Microsoft.Practices.Prism.Mvvm;
+using ServiceModule.Connection;
 using ServiceModule.Fuzzy;
 using ServiceModule.Interfaces;
 using System;
 using System.ComponentModel.Composition;
+using System.Threading;
 using System.Windows.Controls;
 
 namespace ServiceModule.Calculations
@@ -105,11 +107,9 @@ namespace ServiceModule.Calculations
         /// Sending the array of delays to arduino, and recive data from arduino when done operation
         /// </summary>
         /// <param name="stackPanel">Stack panel with selected combination of speed</param>
-        private void sendData(StackPanel stackPanel)
+        private void sendData()
         {
-            choseOption(stackPanel);
             calculateDelay();
-
             foreach (var item in delay)
             {
                 if (!connection.myPort.IsOpen)
@@ -118,7 +118,7 @@ namespace ServiceModule.Calculations
                 var watch = System.Diagnostics.Stopwatch.StartNew();
 
                 connection.myPort.Write(item);
-              
+
                 connection.myPort.ReadLine();
                 watch.Stop();
                 Console.WriteLine(watch.ElapsedMilliseconds);
@@ -126,20 +126,19 @@ namespace ServiceModule.Calculations
         }
 
         /// <summary>
-        /// Public method to, Fuzzy logic calcualtions. Result is in delay array
+        /// Chose combination
         /// </summary>
-        public void Calculate()
+         public void ChoseOption(StackPanel stackPanel)
         {
-            calculateDelay();
+            choseOption(stackPanel);
         }
 
         /// <summary>
         /// Public method to, sending the array of delays to arduino, and recive data from arduino when done operation
         /// </summary>
-        /// <param name="stackPanel">Stack panel with selected combination of speed</param>
-        public void SendDataToArduino(StackPanel stackPanel)
+        public void SendDataToArduino()
         {
-            sendData(stackPanel);
+            sendData();
         }
     }
 }

@@ -4,14 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ChartModule.View"
+             xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="20" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="20" />
         </Grid.RowDefinitions>
+        
         <StackPanel Orientation="Horizontal" Grid.Row="0">
             <Button Content="Send Data" Command="{Binding SendDataCommand, Mode=TwoWay}"
                     CommandParameter="{Binding ElementName=RadioButtonGroup}"/>
@@ -24,5 +25,7 @@
             <RadioButton Content="Fast-Slow-Middle" x:Name="radioButtonFastSlowMiddle"/>
             <RadioButton Content="Fast-Middle-Slow" x:Name="radioButtonFastMiddleSlow"/>
         </StackPanel>
+        <wpfTool:BusyIndicator Grid.RowSpan="2" Opacity="50" IsBusy="{Binding IsBusy, UpdateSourceTrigger=PropertyChanged, FallbackValue = False}"
+                               Width="auto" Height="auto" />
     </Grid>
 </UserControl>
