@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WPF_INZ"
         xmlns:prism="http://www.codeplex.com/CompositeWPF"
         mc:Ignorable="d"
-        Title="Shell" Height="300" Width="300">
+        Title="Shell" Height="400" Width="300">
     <Grid>
         <ContentControl Grid.Row="1" Grid.Column="1" prism:RegionManager.RegionName="ChartRegion"
                         VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
