@@ -6,12 +6,15 @@
              xmlns:local="clr-namespace:ChartModule.View"
              xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
              xmlns:chart="http://oxyplot.org/wpf"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              mc:Ignorable="d" 
              d:DesignHeight="360" d:DesignWidth="500">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/ChartModule;component/Resources/Images.xaml" />
+                <ResourceDictionary Source="/ChartModule;component/Resources/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -31,8 +34,15 @@
             <Button Content="Send Data" Command="{Binding SendDataCommand, Mode=TwoWay}"
                     CommandParameter="{Binding ElementName=RadioButtonGroup}"/>
         </StackPanel>
-        <StackPanel x:Name="RadioButtonGroup" Orientation="Vertical" Grid.Row="1" Margin="0,20,0,0" >
-            <RadioButton Margin="7,0,0,0" Content="Slow-Middle-Fast" x:Name="radioButtonSlowMiddleFast" IsChecked="True"/>
+        <StackPanel x:Name="RadioButtonGroup" Orientation="Vertical" Grid.Row="1" Margin="0,20,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <RadioButton Margin="7,0,0,0" Content="Slow-Middle-Fast" x:Name="radioButtonSlowMiddleFast" IsChecked="True">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Checked">
+                        <i:InvokeCommandAction Command="{Binding CalculateDelayCommand, Mode=TwoWay}"
+                    CommandParameter="{Binding ElementName=RadioButtonGroup}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </RadioButton>
             <StackPanel Orientation="Horizontal" Margin="2">
                 <Image Source="{StaticResource Snail}" Width="30" />
                 <Image Source="{StaticResource Separator}" Width="15" />
@@ -40,7 +50,14 @@
                 <Image Source="{StaticResource Separator}" Width="15"/>
                 <Image Source="{StaticResource Rabbit}" Width="30" />
             </StackPanel>
-            <RadioButton Margin="7,0,0,0" Content="Slow-Fast-Middle" x:Name="radioButtonSlowFastMiddle"/>
+            <RadioButton Margin="7,0,0,0" Content="Slow-Fast-Middle" x:Name="radioButtonSlowFastMiddle">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Checked">
+                        <i:InvokeCommandAction Command="{Binding CalculateDelayCommand, Mode=TwoWay}"
+                    CommandParameter="{Binding ElementName=RadioButtonGroup}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </RadioButton>
             <StackPanel Orientation="Horizontal" Margin="2">
                 <Image Source="{StaticResource Snail}" Width="30" />
                 <Image Source="{StaticResource Separator}" Width="15" />
@@ -81,12 +98,12 @@
                 <Image Source="{StaticResource Snail}" Width="30" />
             </StackPanel>
         </StackPanel>
-        <chart:Plot Grid.Column="1" Grid.Row="1" Title="Title">
+        <chart:Plot Grid.Column="1" Grid.Row="1" Title="Slider speed move">
             <chart:Plot.Series>
-                <chart:LineSeries ItemsSource="{Binding calculationService.abc}"/>
+                <chart:LineSeries ItemsSource="{Binding Delaya, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </chart:Plot.Series>
         </chart:Plot>
-        <wpfTool:BusyIndicator Grid.RowSpan="2" Opacity="50" IsBusy="{Binding IsBusy, UpdateSourceTrigger=PropertyChanged, FallbackValue = False}"
+        <wpfTool:BusyIndicator BusyContent="Moving slider ..."  Grid.RowSpan="2" Opacity="50" IsBusy="{Binding IsBusy, UpdateSourceTrigger=PropertyChanged, FallbackValue = False}"
                                Width="auto" Height="auto" />
     </Grid>
 </UserControl>

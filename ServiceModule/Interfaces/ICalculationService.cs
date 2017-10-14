@@ -22,5 +22,10 @@ namespace ServiceModule.Interfaces
         /// </summary>
         
         void SendDataToArduino();
+
+        /// <summary>
+        /// Calculate delays
+        /// </summary>
+        string[] CalculateDelay();
     }
 }
