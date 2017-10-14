@@ -19,8 +19,6 @@ namespace ServiceModule.Calculations
         string[] delay = new string[1400]; // table with delays to arduino
         int[] choseCombination = new int[3]; //combination of steper speed
 
-        public int[] Delay { get; set; }
-
         /// <summary>
         /// Set combination of fuzzy rules, accord to checked radiobutton
         /// </summary>

@@ -7,14 +7,12 @@
              xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
              xmlns:chart="http://oxyplot.org/wpf"
              xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
-             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              mc:Ignorable="d" 
              d:DesignHeight="360" d:DesignWidth="500">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/ChartModule;component/Resources/Images.xaml" />
-                <ResourceDictionary Source="/ChartModule;component/Resources/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -65,7 +63,14 @@
                 <Image Source="{StaticResource Separator}" Width="15"/>
                 <Image Source="{StaticResource Horse}" Width="30" />
             </StackPanel>
-            <RadioButton Margin="7,0,0,0" Content="Middle-Slow-Fast" x:Name="radioButtonMiddleSlowFast"/>
+            <RadioButton Margin="7,0,0,0" Content="Middle-Slow-Fast" x:Name="radioButtonMiddleSlowFast">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Checked">
+                        <i:InvokeCommandAction Command="{Binding CalculateDelayCommand, Mode=TwoWay}"
+                    CommandParameter="{Binding ElementName=RadioButtonGroup}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </RadioButton>
             <StackPanel Orientation="Horizontal" Margin="2">
                 <Image Source="{StaticResource Horse}" Width="30" />
                 <Image Source="{StaticResource Separator}" Width="15" />
@@ -73,7 +78,14 @@
                 <Image Source="{StaticResource Separator}" Width="15"/>
                 <Image Source="{StaticResource Rabbit}" Width="30" />
             </StackPanel>
-            <RadioButton Margin="7,0,0,0" Content="Middle-Fast-Slow" x:Name="radioButtonMiddleFastSlow"/>
+            <RadioButton Margin="7,0,0,0" Content="Middle-Fast-Slow" x:Name="radioButtonMiddleFastSlow">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Checked">
+                        <i:InvokeCommandAction Command="{Binding CalculateDelayCommand, Mode=TwoWay}"
+                    CommandParameter="{Binding ElementName=RadioButtonGroup}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </RadioButton>
             <StackPanel Orientation="Horizontal" Margin="2">
                 <Image Source="{StaticResource Horse}" Width="30" />
                 <Image Source="{StaticResource Separator}" Width="15" />
@@ -81,7 +93,14 @@
                 <Image Source="{StaticResource Separator}" Width="15"/>
                 <Image Source="{StaticResource Snail}" Width="30" />
             </StackPanel>
-            <RadioButton Margin="7,0,0,0" Content="Fast-Slow-Middle" x:Name="radioButtonFastSlowMiddle"/>
+            <RadioButton Margin="7,0,0,0" Content="Fast-Slow-Middle" x:Name="radioButtonFastSlowMiddle">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Checked">
+                        <i:InvokeCommandAction Command="{Binding CalculateDelayCommand, Mode=TwoWay}"
+                    CommandParameter="{Binding ElementName=RadioButtonGroup}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </RadioButton>
             <StackPanel Orientation="Horizontal" Margin="2">
                 <Image Source="{StaticResource Rabbit}" Width="30" />
                 <Image Source="{StaticResource Separator}" Width="15" />
@@ -89,7 +108,14 @@
                 <Image Source="{StaticResource Separator}" Width="15"/>
                 <Image Source="{StaticResource Horse}" Width="30" />
             </StackPanel>
-            <RadioButton Margin="7,0,0,0" Content="Fast-Middle-Slow" x:Name="radioButtonFastMiddleSlow"/>
+            <RadioButton Margin="7,0,0,0" Content="Fast-Middle-Slow" x:Name="radioButtonFastMiddleSlow">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Checked">
+                        <i:InvokeCommandAction Command="{Binding CalculateDelayCommand, Mode=TwoWay}"
+                    CommandParameter="{Binding ElementName=RadioButtonGroup}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </RadioButton>
             <StackPanel Orientation="Horizontal" Margin="2">
                 <Image Source="{StaticResource Rabbit}" Width="30" />
                 <Image Source="{StaticResource Separator}" Width="15" />
@@ -98,7 +124,7 @@
                 <Image Source="{StaticResource Snail}" Width="30" />
             </StackPanel>
         </StackPanel>
-        <chart:Plot Grid.Column="1" Grid.Row="1" Title="Slider speed move">
+        <chart:Plot Grid.Column="1" Grid.Row="1" Title="Slider speed move" TitleFont="Arial" TitleFontWeight="ExtraLight">
             <chart:Plot.Series>
                 <chart:LineSeries ItemsSource="{Binding Delaya, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </chart:Plot.Series>

@@ -1,14 +1,12 @@
-﻿using ChartModule.Model;
-using Microsoft.Practices.Prism.Commands;
+﻿using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.Mvvm;
 using OxyPlot;
+using OxyPlot.Series;
 using ServiceModule.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.Composition;
 using System.Threading;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -69,7 +67,7 @@ namespace ChartModule.ViewModel
             foreach (var item in delayArray)
             {
                 i++;
-                Delaya.Add(new DataPoint(i,item));
+                Delaya.Add(new DataPoint(i, item));
             }
         }
         #endregion
