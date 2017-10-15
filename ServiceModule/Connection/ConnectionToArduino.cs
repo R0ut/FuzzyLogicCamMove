@@ -20,8 +20,9 @@ namespace ServiceModule.Connection
             {
                 myPort = new SerialPort();
                 myPort.BaudRate = 463611; //transmision speed
-                myPort.PortName = SerialPort.GetPortNames()[0];
 
+                myPort.PortName = SerialPort.GetPortNames()[SerialPort.GetPortNames().Length - 1];
+                
                 myPort.Parity = Parity.None;
                 myPort.DataBits = 8;
                 myPort.StopBits = StopBits.One;
@@ -30,7 +31,6 @@ namespace ServiceModule.Connection
             }
             catch (Exception)
             {
-                MessageBox.Show("Connection problem");
             }
         }
     }

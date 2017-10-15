@@ -3,6 +3,9 @@ using ServiceModule.Fuzzy;
 using ServiceModule.Interfaces;
 using System;
 using System.ComponentModel.Composition;
+using System.IO;
+using System.IO.Ports;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace ServiceModule.Calculations
@@ -18,6 +21,7 @@ namespace ServiceModule.Calculations
         ConnectionToArduino connection = new ConnectionToArduino();
         string[] delay = new string[1400]; // table with delays to arduino
         int[] choseCombination = new int[3]; //combination of steper speed
+        private bool isReConnectNeed = false; //flag to try create new connection
 
         /// <summary>
         /// Set combination of fuzzy rules, accord to checked radiobutton
@@ -105,15 +109,33 @@ namespace ServiceModule.Calculations
         /// <param name="stackPanel">Stack panel with selected combination of speed</param>
         private void sendData()
         {
-            calculateDelay();
-            foreach (var item in delay)
+            try
             {
-                if (!connection.myPort.IsOpen)
-                    connection.myPort.Open();
+                if (isReConnectNeed)
+                {
+                    connection = new ConnectionToArduino();
+                }
+                    
+                isReConnectNeed = false;
 
-                connection.myPort.Write(item);
+                foreach (var item in delay)
+                {
+                    if (!connection.myPort.IsOpen)
+                        connection.myPort.Open();
 
-                connection.myPort.ReadLine();
+                    connection.myPort.Write(item);
+
+                    connection.myPort.ReadLine();
+                }
+            }
+            catch (IOException portEx)
+            {
+                MessageBox.Show("Connection problem, can`t find device", "Information", MessageBoxButton.OK, MessageBoxImage.Warning);
+                isReConnectNeed = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something goes wrong ...", "Information", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 

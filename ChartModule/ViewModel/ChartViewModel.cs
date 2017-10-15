@@ -1,7 +1,6 @@
 ﻿using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.Mvvm;
 using OxyPlot;
-using OxyPlot.Series;
 using ServiceModule.Interfaces;
 using System;
 using System.Collections.ObjectModel;
@@ -30,7 +29,7 @@ namespace ChartModule.ViewModel
             SendDataCommand = new DelegateCommand<StackPanel>(sendDataAction);
             CalculateDelayCommand = new DelegateCommand<StackPanel>(calculateDelay);
             IsBusy = false;
-            Delaya = new ObservableCollection<DataPoint>();
+            Delay = new ObservableCollection<DataPoint>();
         }
 
         #region Commands
@@ -62,18 +61,17 @@ namespace ChartModule.ViewModel
         {
             calculationService.ChoseOption(stackPanel);
             delayArray = Array.ConvertAll(calculationService.CalculateDelay(), int.Parse);
-            Delaya.Clear();
+            Delay.Clear();
             int i = 0;
             foreach (var item in delayArray)
             {
                 i++;
-                Delaya.Add(new DataPoint(i, item));
+                Delay.Add(new DataPoint(i, item));
             }
         }
         #endregion
 
         #region Properties
-
         /// <summary>
         /// Busy property
         /// </summary>
@@ -91,14 +89,14 @@ namespace ChartModule.ViewModel
         /// <summary>
         /// Array of delays
         /// </summary>
-        ObservableCollection<DataPoint> delaya;
-        public ObservableCollection<DataPoint> Delaya
+        ObservableCollection<DataPoint> delay;
+        public ObservableCollection<DataPoint> Delay
         {
-            get { return delaya; }
+            get { return delay; }
             set
             {
-                delaya = value;
-                OnPropertyChanged(() => Delaya);
+                delay = value;
+                OnPropertyChanged(() => Delay);
             }
         }
 
@@ -111,25 +109,6 @@ namespace ChartModule.ViewModel
         {
             while (cameraMoveThread.IsAlive) { }
             IsBusy = false;
-        }
-
-
-        /// <summary>
-        /// Notify when calculation ends
-        /// </summary>
-        private void notifyWhenCalculationEnd()
-        {
-            while (calculationThread.IsAlive) { }
-
-           
-                int i = 0;
-                foreach (var item in delayArray)
-                {
-                    //i++;
-                    //Delay.Add(new Series() { Distance = i, Delay = item });
-                }
-           
-           
         }
     }
 }
