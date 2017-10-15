@@ -3,6 +3,9 @@ using ServiceModule.Fuzzy;
 using ServiceModule.Interfaces;
 using System;
 using System.ComponentModel.Composition;
+using System.IO;
+using System.IO.Ports;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace ServiceModule.Calculations
@@ -16,8 +19,9 @@ namespace ServiceModule.Calculations
         FuzzyLogic fuzzyLogic = new FuzzyLogic();
         Rules rules = new Rules();
         ConnectionToArduino connection = new ConnectionToArduino();
-        string[] delay = new string[1000]; // table with delays to arduino
+        string[] delay = new string[1400]; // table with delays to arduino
         int[] choseCombination = new int[3]; //combination of steper speed
+        private bool isReConnectNeed = false; //flag to try create new connection
 
         /// <summary>
         /// Set combination of fuzzy rules, accord to checked radiobutton
@@ -26,7 +30,7 @@ namespace ServiceModule.Calculations
         {
             foreach (object child in stackPanel.Children)
             {
-                if ((bool)(child as RadioButton).IsChecked)
+                if ((child as RadioButton != null) && (bool)(child as RadioButton).IsChecked)
                 {
                     if ((child as RadioButton).Name == "radioButtonSlowMiddleFast")
                     {
@@ -73,30 +77,28 @@ namespace ServiceModule.Calculations
         /// </summary>
         private void calculateDelay()
         {
-            double[] firstOutput = new double[3000];
-            double[] secondOutput = new double[3000];
-            double[] thirdOutput = new double[3000];
-            double[] Output = new double[3000];
-           
-            for (int k = 0; k <= 999; k++)
+            double[] firstOutput = new double[4000];
+            double[] secondOutput = new double[4000];
+            double[] thirdOutput = new double[4000];
+            double[] Output = new double[4000];
+
+            for (int k = 0; k < 1400; k++)
             {
                 fuzzyLogic.FuzzificationInput(k);
                 rules.RulesRun(fuzzyLogic.fuzzificationInput, choseCombination);
                 double result = 0;
                 double sumOfWeights = 0; // sum of weights
 
-                for (int i = 0; i <= 2600; i++) // +950 aby było 3550
+                for (int i = 0; i < 4000; i++) //max z output
                 {
-                    fuzzyLogic.FuzzificationOutput(i+950);
+                    fuzzyLogic.FuzzificationOutput(i + 1000); // + 1000 bo output min jest 1000
                     firstOutput[i] = Math.Min(rules.rules[0], fuzzyLogic.fuzzificationOutput[0]);
                     secondOutput[i] = Math.Min(rules.rules[1], fuzzyLogic.fuzzificationOutput[1]);
                     thirdOutput[i] = Math.Min(rules.rules[2], fuzzyLogic.fuzzificationOutput[2]);
                     Output[i] = Math.Max(Math.Max(firstOutput[i], secondOutput[i]), thirdOutput[i]);
-                    result += (i + 950) * Output[i];
+                    result += (i + 1000) * Output[i];
                     sumOfWeights += Output[i];
                 }
-
-                Math.Round((result / sumOfWeights), 0).ToString();
                 delay[k] = Math.Round((result / sumOfWeights), 0).ToString();
             }
         }
@@ -105,41 +107,62 @@ namespace ServiceModule.Calculations
         /// Sending the array of delays to arduino, and recive data from arduino when done operation
         /// </summary>
         /// <param name="stackPanel">Stack panel with selected combination of speed</param>
-        private void sendData(StackPanel stackPanel)
+        private void sendData()
         {
-            choseOption(stackPanel);
-            calculateDelay();
-
-            foreach (var item in delay)
+            try
             {
-                if (!connection.myPort.IsOpen)
-                    connection.myPort.Open();
+                if (isReConnectNeed)
+                {
+                    connection = new ConnectionToArduino();
+                }
+                    
+                isReConnectNeed = false;
 
-                var watch = System.Diagnostics.Stopwatch.StartNew();
+                foreach (var item in delay)
+                {
+                    if (!connection.myPort.IsOpen)
+                        connection.myPort.Open();
 
-                connection.myPort.Write(item);
-              
-                connection.myPort.ReadLine();
-                watch.Stop();
-                Console.WriteLine(watch.ElapsedMilliseconds);
+                    connection.myPort.Write(item);
+
+                    connection.myPort.ReadLine();
+                }
+            }
+            catch (IOException portEx)
+            {
+                MessageBox.Show("Connection problem, can`t find device", "Information", MessageBoxButton.OK, MessageBoxImage.Warning);
+                isReConnectNeed = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something goes wrong ...", "Information", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
         /// <summary>
-        /// Public method to, Fuzzy logic calcualtions. Result is in delay array
+        /// Chose combination
         /// </summary>
-        public void Calculate()
+        public void ChoseOption(StackPanel stackPanel)
         {
-            calculateDelay();
+            choseOption(stackPanel);
         }
 
         /// <summary>
         /// Public method to, sending the array of delays to arduino, and recive data from arduino when done operation
         /// </summary>
-        /// <param name="stackPanel">Stack panel with selected combination of speed</param>
-        public void SendDataToArduino(StackPanel stackPanel)
+        public void SendDataToArduino()
         {
-            sendData(stackPanel);
+            sendData();
+        }
+
+        /// <summary>
+        /// Calculate delays
+        /// </summary>
+        /// <returns>Array of delays</returns>
+        public string[] CalculateDelay()
+        {
+            calculateDelay();
+            return delay;
         }
     }
 }

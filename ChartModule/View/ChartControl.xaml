@@ -4,25 +4,154 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ChartModule.View"
+             xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+             xmlns:chart="http://oxyplot.org/wpf"
+             xmlns:converter="clr-namespace:ChartModule.Converters"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="480" d:DesignWidth="700">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <converter:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/ChartModule;component/Resources/Images.xaml" />
+                <ResourceDictionary Source="/ChartModule;component/Resources/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid Margin="10">
+
         <Grid.RowDefinitions>
             <RowDefinition Height="20" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="20" />
+            <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Grid.Row="0">
-            <Button Content="Send Data" Command="{Binding SendDataCommand, Mode=TwoWay}"
-                    CommandParameter="{Binding ElementName=RadioButtonGroup}"/>
-        </StackPanel>
-        <StackPanel x:Name="RadioButtonGroup" Orientation="Vertical" Grid.Row="1" Margin="0,20,0,0">
-            <RadioButton Content="Slow-Middle-Fast" x:Name="radioButtonSlowMiddleFast" IsChecked="True"/>
-            <RadioButton Content="Slow-Fast-Middle" x:Name="radioButtonSlowFastMiddle"/>
-            <RadioButton Content="Middle-Slow-Fast" x:Name="radioButtonMiddleSlowFast"/>
-            <RadioButton Content="Middle-Fast-Slow" x:Name="radioButtonMiddleFastSlow"/>
-            <RadioButton Content="Fast-Slow-Middle" x:Name="radioButtonFastSlowMiddle"/>
-            <RadioButton Content="Fast-Middle-Slow" x:Name="radioButtonFastMiddleSlow"/>
-        </StackPanel>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="25"/>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <GroupBox Grid.RowSpan="2" Header="Slider combinations" Margin="0,10,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <StackPanel x:Name="RadioButtonGroup" Orientation="Vertical" Grid.Row="1" Margin="0,20,0,0">
+                <RadioButton Margin="7,0,0,0" Content="Slow-Middle-Fast" x:Name="radioButtonSlowMiddleFast" IsChecked="True">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Checked">
+                            <i:InvokeCommandAction Command="{Binding CalculateDelayCommand, Mode=TwoWay}"
+                    CommandParameter="{Binding ElementName=RadioButtonGroup}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </RadioButton>
+                <StackPanel Orientation="Horizontal" Margin="2">
+                    <Image Source="{StaticResource Snail}" Width="30" />
+                    <Image Source="{StaticResource Separator}" Width="15" />
+                    <Image Source="{StaticResource Horse}" Width="30" />
+                    <Image Source="{StaticResource Separator}" Width="15"/>
+                    <Image Source="{StaticResource Rabbit}" Width="30" />
+                </StackPanel>
+                <RadioButton Margin="7,0,0,0" Content="Slow-Fast-Middle" x:Name="radioButtonSlowFastMiddle">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Checked">
+                            <i:InvokeCommandAction Command="{Binding CalculateDelayCommand, Mode=TwoWay}"
+                    CommandParameter="{Binding ElementName=RadioButtonGroup}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </RadioButton>
+                <StackPanel Orientation="Horizontal" Margin="2">
+                    <Image Source="{StaticResource Snail}" Width="30" />
+                    <Image Source="{StaticResource Separator}" Width="15" />
+                    <Image Source="{StaticResource Rabbit}" Width="30" />
+                    <Image Source="{StaticResource Separator}" Width="15"/>
+                    <Image Source="{StaticResource Horse}" Width="30" />
+                </StackPanel>
+                <RadioButton Margin="7,0,0,0" Content="Middle-Slow-Fast" x:Name="radioButtonMiddleSlowFast">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Checked">
+                            <i:InvokeCommandAction Command="{Binding CalculateDelayCommand, Mode=TwoWay}"
+                    CommandParameter="{Binding ElementName=RadioButtonGroup}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </RadioButton>
+                <StackPanel Orientation="Horizontal" Margin="2">
+                    <Image Source="{StaticResource Horse}" Width="30" />
+                    <Image Source="{StaticResource Separator}" Width="15" />
+                    <Image Source="{StaticResource Snail}" Width="30" />
+                    <Image Source="{StaticResource Separator}" Width="15"/>
+                    <Image Source="{StaticResource Rabbit}" Width="30" />
+                </StackPanel>
+                <RadioButton Margin="7,0,0,0" Content="Middle-Fast-Slow" x:Name="radioButtonMiddleFastSlow">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Checked">
+                            <i:InvokeCommandAction Command="{Binding CalculateDelayCommand, Mode=TwoWay}"
+                    CommandParameter="{Binding ElementName=RadioButtonGroup}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </RadioButton>
+                <StackPanel Orientation="Horizontal" Margin="2">
+                    <Image Source="{StaticResource Horse}" Width="30" />
+                    <Image Source="{StaticResource Separator}" Width="15" />
+                    <Image Source="{StaticResource Rabbit}" Width="30" />
+                    <Image Source="{StaticResource Separator}" Width="15"/>
+                    <Image Source="{StaticResource Snail}" Width="30" />
+                </StackPanel>
+                <RadioButton Margin="7,0,0,0" Content="Fast-Slow-Middle" x:Name="radioButtonFastSlowMiddle">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Checked">
+                            <i:InvokeCommandAction Command="{Binding CalculateDelayCommand, Mode=TwoWay}"
+                    CommandParameter="{Binding ElementName=RadioButtonGroup}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </RadioButton>
+                <StackPanel Orientation="Horizontal" Margin="2">
+                    <Image Source="{StaticResource Rabbit}" Width="30" />
+                    <Image Source="{StaticResource Separator}" Width="15" />
+                    <Image Source="{StaticResource Snail}" Width="30" />
+                    <Image Source="{StaticResource Separator}" Width="15"/>
+                    <Image Source="{StaticResource Horse}" Width="30" />
+                </StackPanel>
+                <RadioButton Margin="7,0,0,0" Content="Fast-Middle-Slow" x:Name="radioButtonFastMiddleSlow">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Checked">
+                            <i:InvokeCommandAction Command="{Binding CalculateDelayCommand, Mode=TwoWay}"
+                    CommandParameter="{Binding ElementName=RadioButtonGroup}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </RadioButton>
+                <StackPanel Orientation="Horizontal" Margin="2">
+                    <Image Source="{StaticResource Rabbit}" Width="30" />
+                    <Image Source="{StaticResource Separator}" Width="15" />
+                    <Image Source="{StaticResource Horse}" Width="30" />
+                    <Image Source="{StaticResource Separator}" Width="15"/>
+                    <Image Source="{StaticResource Snail}" Width="30" />
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+
+        <Label FontWeight="Bold" Margin="0,0,-90,0" Width="110" Grid.Row="1" Grid.Column="1" Content="Delay" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Label.RenderTransform>
+                <RotateTransform Angle="270" />
+            </Label.RenderTransform>
+        </Label>
+
+        <Label FontWeight="Bold" Margin="120,-20,0,0" Width="110" Grid.Row="2" Grid.Column="2" Content="Distance" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <chart:Plot Grid.Column="2" Grid.RowSpan="2" Title="Slider speed move" 
+                    TitleFont="Arial" TitleFontWeight="ExtraLight" >
+            <chart:Plot.Series>
+                <chart:LineSeries ItemsSource="{Binding Delay, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            </chart:Plot.Series>
+        </chart:Plot>
+        <wpfTool:BusyIndicator BusyContent="Moving slider ..."  Grid.RowSpan="3" Opacity="50" IsBusy="{Binding IsBusy, UpdateSourceTrigger=PropertyChanged, FallbackValue = False}"
+                               Width="auto" Height="auto" />
+
+        <Button Style="{StaticResource ButtonStyle}" Grid.Row="2" Grid.Column="0" Height="30" Width="120" Margin="0,10,0,0" IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBooleanConverter}}"
+                 Command="{Binding SendDataCommand, Mode=TwoWay}" CommandParameter="{Binding ElementName=RadioButtonGroup}">
+            <Button.Content>
+                <StackPanel>
+                    <TextBlock Text="Send" FontSize="20" Margin="20,0,0,0"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
     </Grid>
 </UserControl>

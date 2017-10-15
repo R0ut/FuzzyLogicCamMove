@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <BitmapImage x:Key="Snail" UriSource="/Resource/Images/Snail.png" />
+    <BitmapImage x:Key="Horse" UriSource="/Resource/Images/Horse.png" />
+    <BitmapImage x:Key="Rabbit" UriSource="/Resource/Images/Rabbit.png" />
+    <BitmapImage x:Key="Separator" UriSource="/Resource/Images/Separator.png" />
+    <Color x:Key="LightForegroundColor">White</Color>
+    <SolidColorBrush x:Key="LightForegroundBrush" Color="{StaticResource LightForegroundColor}"></SolidColorBrush>
+
+
+</ResourceDictionary>

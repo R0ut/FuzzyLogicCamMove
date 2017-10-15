@@ -18,6 +18,7 @@ namespace ChartModule.View
         public ChartControl(ChartViewModel vm)
         {
             InitializeComponent();
+            vm.CalculateDelayCommand.Execute(RadioButtonGroup);
             this.DataContext = vm;
         }
     }
