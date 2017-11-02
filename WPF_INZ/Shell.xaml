@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:WPF_INZ"
         xmlns:prism="http://www.codeplex.com/CompositeWPF"
         mc:Ignorable="d"
-        Title="Shell" Height="500" Width="700">
+        Title="Camera Slider" 
+        Icon="/WPF_INZ;component/Resources/Icon.ico"
+        Height="500" Width="700">
     <Grid>
         <ContentControl Grid.Row="1" Grid.Column="1" prism:RegionManager.RegionName="ChartRegion"
                         VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
