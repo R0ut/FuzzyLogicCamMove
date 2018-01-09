@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WPF_INZ</name>
+    </assembly>
+    <members>
+        <member name="T:WPF_INZ.Bootstrapper">
+            <summary>
+            Bootstrapper is the one who has responsibility to initialization of your application 
+            </summary>
+        </member>
+        <member name="M:WPF_INZ.Bootstrapper.CreateShell">
+            <summary>
+             Specify the top-level Window for Prism application
+            </summary>
+            <returns>Main window</returns>
+        </member>
+        <member name="M:WPF_INZ.Bootstrapper.InitializeShell">
+            <summary>
+            Initialization steps, after shell create
+            </summary>
+        </member>
+        <member name="M:WPF_INZ.Bootstrapper.ConfigureAggregateCatalog">
+            <summary>
+            Type registration to the AggregateCatalog imperatively
+            </summary>
+        </member>
+        <member name="M:WPF_INZ.Bootstrapper.CreateContainer">
+            <summary>
+            Create container
+            </summary>
+            <returns>Container</returns>
+        </member>
+        <member name="T:WPF_INZ.Shell">
+            <summary>
+            Interaction logic for Shell.xaml
+            </summary>
+            <summary>
+            Shell
+            </summary>
+        </member>
+        <member name="M:WPF_INZ.Shell.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:WPF_INZ.App">
+            <summary>
+            Interaction logic for App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:WPF_INZ.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:WPF_INZ.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:WPF_INZ.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:WPF_INZ.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+    </members>
+</doc>

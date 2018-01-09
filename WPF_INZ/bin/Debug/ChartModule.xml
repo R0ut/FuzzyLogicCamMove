@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ChartModule</name>
+    </assembly>
+    <members>
+        <member name="T:ChartModule.ChartModule">
+            <summary>
+            Module class provide exportable chart module
+            </summary>
+        </member>
+        <member name="M:ChartModule.ChartModule.Initialize">
+            <summary>
+            Initializate module
+            </summary>
+        </member>
+        <member name="T:ChartModule.Converters.InverseBooleanConverter">
+            <summary>
+            Inverse bool
+            </summary>
+        </member>
+        <member name="M:ChartModule.Converters.InverseBooleanConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Inverse bool
+            </summary>
+            <param name="value">Bool value</param>
+            <param name="targetType">Target type converter</param>
+            <param name="parameter">Converter parameter</param>
+            <param name="culture">CultureInfo parameter</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChartModule.Converters.InverseBooleanConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Not implemented convert back method- there is no need to convert this values back
+            </summary>
+            <param name="value">Bool value</param>
+            <param name="targetType">Target type converter</param>
+            <param name="parameter">Converter parameter</param>
+            <param name="culture">CultureInfo parameter</param>
+            <returns></returns>
+        </member>
+        <member name="T:ChartModule.ViewModel.ChartViewModel">
+            <summary>
+            ViewModel to chart module
+            </summary>
+        </member>
+        <member name="M:ChartModule.ViewModel.ChartViewModel.sendDataAction(System.Windows.Controls.StackPanel)">
+            <summary>
+            Action that execute sending data to arduino
+            </summary>
+            <param name="stackPanel">stack panel with selected combination</param>
+        </member>
+        <member name="M:ChartModule.ViewModel.ChartViewModel.calculateDelay(System.Windows.Controls.StackPanel)">
+            <summary>
+            Action that execute calculating delays
+            </summary>
+            <param name="stackPanel">stack panel with selected combination</param>
+        </member>
+        <member name="F:ChartModule.ViewModel.ChartViewModel.isBusy">
+            <summary>
+            Busy property
+            </summary>
+        </member>
+        <member name="F:ChartModule.ViewModel.ChartViewModel.delay">
+            <summary>
+            Array of delays
+            </summary>
+        </member>
+        <member name="M:ChartModule.ViewModel.ChartViewModel.keepBusyInducator">
+            <summary>
+            Change IsBusy from true to false when operations end
+            </summary>
+        </member>
+        <member name="T:ChartModule.View.ChartControl">
+            <summary>
+            Interaction logic for ChartControl.xaml
+            </summary>
+            <summary>
+            ChartControl
+            </summary>
+        </member>
+        <member name="M:ChartModule.View.ChartControl.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:ChartModule.Resources.Images">
+            <summary>
+            Images
+            </summary>
+        </member>
+        <member name="M:ChartModule.Resources.Images.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+    </members>
+</doc>
