@@ -1,0 +1,5 @@
+C:\Users\Janek\Documents\Visual Studio 2015\inz\WPF_INZ\ServiceModule\bin\Debug\ServiceModule.XML
+C:\Users\Janek\Documents\Visual Studio 2015\inz\WPF_INZ\ServiceModule\bin\Debug\ServiceModule.dll
+C:\Users\Janek\Documents\Visual Studio 2015\inz\WPF_INZ\ServiceModule\bin\Debug\ServiceModule.pdb
+C:\Users\Janek\Documents\Visual Studio 2015\inz\WPF_INZ\ServiceModule\obj\Debug\ServiceModule.dll
+C:\Users\Janek\Documents\Visual Studio 2015\inz\WPF_INZ\ServiceModule\obj\Debug\ServiceModule.pdb

@@ -1,0 +1,10 @@
+C:\Users\Janek\Documents\Visual Studio 2015\inz\WPF_INZ\WPF_INZ.Tests\obj\Debug\WPF_INZ.Tests.csprojResolveAssemblyReference.cache
+C:\Users\Janek\Documents\Visual Studio 2015\inz\WPF_INZ\WPF_INZ.Tests\bin\Debug\WPF_INZ.Tests.dll
+C:\Users\Janek\Documents\Visual Studio 2015\inz\WPF_INZ\WPF_INZ.Tests\bin\Debug\WPF_INZ.Tests.pdb
+C:\Users\Janek\Documents\Visual Studio 2015\inz\WPF_INZ\WPF_INZ.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\Janek\Documents\Visual Studio 2015\inz\WPF_INZ\WPF_INZ.Tests\bin\Debug\ServiceModule.dll
+C:\Users\Janek\Documents\Visual Studio 2015\inz\WPF_INZ\WPF_INZ.Tests\bin\Debug\ServiceModule.pdb
+C:\Users\Janek\Documents\Visual Studio 2015\inz\WPF_INZ\WPF_INZ.Tests\bin\Debug\ServiceModule.xml
+C:\Users\Janek\Documents\Visual Studio 2015\inz\WPF_INZ\WPF_INZ.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+C:\Users\Janek\Documents\Visual Studio 2015\inz\WPF_INZ\WPF_INZ.Tests\obj\Debug\WPF_INZ.Tests.dll
+C:\Users\Janek\Documents\Visual Studio 2015\inz\WPF_INZ\WPF_INZ.Tests\obj\Debug\WPF_INZ.Tests.pdb

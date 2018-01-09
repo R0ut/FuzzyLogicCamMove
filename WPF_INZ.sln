@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChartModule", "ChartModule\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceModule", "ServiceModule\ServiceModule.csproj", "{EADC0E7B-3CA6-4A90-890C-46D0F9FC8424}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF_INZ.Tests", "WPF_INZ.Tests\WPF_INZ.Tests.csproj", "{40707922-9375-46C3-9032-810D2FC41BD4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{EADC0E7B-3CA6-4A90-890C-46D0F9FC8424}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EADC0E7B-3CA6-4A90-890C-46D0F9FC8424}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EADC0E7B-3CA6-4A90-890C-46D0F9FC8424}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40707922-9375-46C3-9032-810D2FC41BD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40707922-9375-46C3-9032-810D2FC41BD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40707922-9375-46C3-9032-810D2FC41BD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40707922-9375-46C3-9032-810D2FC41BD4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

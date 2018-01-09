@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ServiceModule</name>
+    </assembly>
+    <members>
+        <member name="T:ServiceModule.Calculations.Calculation">
+            <summary>
+            This class do fuzzy logic, and send data to arduino
+            </summary>
+        </member>
+        <member name="M:ServiceModule.Calculations.Calculation.choseOption(System.Windows.Controls.StackPanel)">
+            <summary>
+            Set combination of fuzzy rules, accord to checked radiobutton
+            </summary>
+        </member>
+        <member name="M:ServiceModule.Calculations.Calculation.calculateDelay">
+            <summary>
+            Fuzzy logic calcualtions. Result is in delay array
+            </summary>
+        </member>
+        <member name="M:ServiceModule.Calculations.Calculation.sendData">
+            <summary>
+            Sending the array of delays to arduino, and recive data from arduino when done operation
+            </summary>
+            <param name="stackPanel">Stack panel with selected combination of speed</param>
+        </member>
+        <member name="M:ServiceModule.Calculations.Calculation.ChoseOption(System.Windows.Controls.StackPanel)">
+            <summary>
+            Chose combination
+            </summary>
+        </member>
+        <member name="M:ServiceModule.Calculations.Calculation.SendDataToArduino">
+            <summary>
+            Public method to, sending the array of delays to arduino, and recive data from arduino when done operation
+            </summary>
+        </member>
+        <member name="M:ServiceModule.Calculations.Calculation.CalculateDelay">
+            <summary>
+            Calculate delays
+            </summary>
+            <returns>Array of delays</returns>
+        </member>
+        <member name="T:ServiceModule.Connection.ConnectionToArduino">
+            <summary>
+            Configurate connection to arduino
+            </summary>
+        </member>
+        <member name="P:ServiceModule.Connection.ConnectionToArduino.myPort">
+            <summary>
+            Property to Serial Port
+            </summary>
+        </member>
+        <member name="T:ServiceModule.Fuzzy.FuzzyLogic">
+            <summary>
+            Contain input and output terms. Define fuzzification for input and output
+            </summary>
+        </member>
+        <member name="M:ServiceModule.Fuzzy.FuzzyLogic.slowSpeed(System.Double)">
+            <summary>
+            Term for start distance
+            </summary>
+            <param name="distance">Actual distance</param>
+        </member>
+        <member name="M:ServiceModule.Fuzzy.FuzzyLogic.middleSpeed(System.Double)">
+            <summary>
+            Term for middle distance
+            </summary>
+            <param name="distance">Actual distance</param>
+        </member>
+        <member name="M:ServiceModule.Fuzzy.FuzzyLogic.fastSpeed(System.Double)">
+            <summary>
+            Term for end distance
+            </summary>
+            <param name="distance">Actual distance</param>
+        </member>
+        <member name="M:ServiceModule.Fuzzy.FuzzyLogic.bigPower(System.Double)">
+            <summary>
+            Term for big power
+            </summary>
+            <param name="distance">power</param>
+        </member>
+        <member name="M:ServiceModule.Fuzzy.FuzzyLogic.middlePower(System.Double)">
+            <summary>
+            Term for middle power
+            </summary>
+            <param name="distance">power</param>
+        </member>
+        <member name="M:ServiceModule.Fuzzy.FuzzyLogic.smalPower(System.Double)">
+            <summary>
+            Term for smal power
+            </summary>
+            <param name="distance">power</param>
+        </member>
+        <member name="M:ServiceModule.Fuzzy.FuzzyLogic.FuzzificationInput(System.Int32)">
+            <summary>
+            Fuzzification of input
+            </summary>
+            <param name="para">Value to fuzzify</param>
+        </member>
+        <member name="M:ServiceModule.Fuzzy.FuzzyLogic.FuzzificationOutput(System.Int32)">
+            <summary>
+            Fuzzification of output
+            </summary>
+            <param name="para">Value to fuzzify</param>
+        </member>
+        <member name="M:ServiceModule.Fuzzy.Rules.RulesRun(System.Double[],System.Int32[])">
+            <summary>
+            Execute rules
+            </summary>
+            <param name="fuzzification">fuzzy input</param>
+            <param name="choseCombination">Combination of rules</param>
+        </member>
+        <member name="T:ServiceModule.Interfaces.ICalculationService">
+            <summary>
+            Main fuzzylogic, and sending/reciving data from arduino
+            </summary>
+        </member>
+        <member name="M:ServiceModule.Interfaces.ICalculationService.ChoseOption(System.Windows.Controls.StackPanel)">
+            <summary>
+            Chose combination
+            </summary>
+            <param name="stackPanel">Stack panel with selected combination</param>
+        </member>
+        <member name="M:ServiceModule.Interfaces.ICalculationService.SendDataToArduino">
+            <summary>
+            Send data to arduino
+            </summary>
+        </member>
+        <member name="M:ServiceModule.Interfaces.ICalculationService.CalculateDelay">
+            <summary>
+            Calculate delays
+            </summary>
+        </member>
+        <member name="T:ServiceModule.ServiceModule">
+            <summary>
+            Module class provide exportable service module
+            </summary>
+        </member>
+        <member name="M:ServiceModule.ServiceModule.Initialize">
+            <summary>
+            Module class provide exportable chart module
+            </summary>
+        </member>
+    </members>
+</doc>
